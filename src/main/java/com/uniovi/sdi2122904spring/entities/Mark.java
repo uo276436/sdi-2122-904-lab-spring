@@ -47,3 +47,6 @@ public class Mark {
         this.score = score;
     }
 }
+//bean profe
+//profesor controller (rest), devuelven strings
+//
