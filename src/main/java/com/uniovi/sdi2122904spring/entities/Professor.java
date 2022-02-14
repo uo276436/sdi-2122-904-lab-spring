@@ -38,7 +38,3 @@ public class Professor {
         this.department = department;
     }
 }
-//bean profe
-//profesor controller (rest), devuelven strings
-//add, edit = post al inicio
-//
