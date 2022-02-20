@@ -3,11 +3,14 @@ package com.uniovi.sdi2122904spring.controllers;
 import com.uniovi.sdi2122904spring.entities.User;
 import com.uniovi.sdi2122904spring.services.SecurityService;
 import com.uniovi.sdi2122904spring.services.UsersService;
+import com.uniovi.sdi2122904spring.validators.SignUpFormValidator;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 @Controller
 public class UsersController {
@@ -15,6 +18,8 @@ public class UsersController {
     private UsersService usersService;
     @Autowired
     private SecurityService securityService;
+    @Autowired
+    private SignUpFormValidator signUpFormValidator;
     @RequestMapping("/user/list")
     public String getListado(Model model) {
         model.addAttribute("usersList", usersService.getUsers());
@@ -52,11 +57,20 @@ public class UsersController {
         return "redirect:/user/details/" + id;
     }
 
+    @RequestMapping(value = "/signup", method = RequestMethod.GET)
+    public String signup(Model model) {
+        model.addAttribute("user", new User());
+        return "signup";
+    }
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    public String signup(@ModelAttribute("user") User user, Model model) {
-        usersService.addUser(user);
-        securityService.autoLogin(user.getDni(), user.getPasswordConfirm());
-        return "redirect:home";
+    public String signup(@Validated User user, BindingResult result) {
+       signUpFormValidator.validate(user, result);
+       if(result.hasErrors()) {
+           return "signup";
+       }
+       usersService.addUser(user);
+       securityService.autoLogin(user.getDni(),user.getPasswordConfirm());
+       return "redirect:home";
     }
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model) {
