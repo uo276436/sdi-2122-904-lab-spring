@@ -8,10 +8,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class Sdi2122904SpringApplicationTests {
+    //UNIVERSIDAD
     static String PathFirefox = "C:\\Program Files\\Mozilla Firefox\\firefox.exe";
+    //static String Geckodriver = "C:\\Users\\uo276436\\Downloads\\PL-SDI-Sesión5-material\\geckodriver-v0.30.0-win64.exe";
+
+    //CASA
+    static String Geckodriver = "B:\\Users\\Sergio\\Desktop\\UNIVERSIDAD 2\\2nd\\SDI\\recursos\\PL-SDI-Sesión5-material\\geckodriver-v0.30.0-win64.exe";
+
     //static String Geckodriver = "C:\\Path\\geckodriver-v0.30.0-win64.exe";
     //static String Geckodriver = "C:\\Dev\\tools\\selenium\\geckodriver-v0.30.0-win64.exe";
-    static String Geckodriver = "C:\\Users\\uo276436\\Downloads\\PL-SDI-Sesión5-material\\geckodriver-v0.30.0-win64.exe";
     //Común a Windows y a MACOSX
     static WebDriver driver = getDriver(PathFirefox, Geckodriver);
     static String URL = "http://localhost:8090";
