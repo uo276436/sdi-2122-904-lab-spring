@@ -3,6 +3,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class PO_Properties {
+	//hice el commit 5.2 mal
 	public static int getSPANISH() {
 		return SPANISH;
 	}

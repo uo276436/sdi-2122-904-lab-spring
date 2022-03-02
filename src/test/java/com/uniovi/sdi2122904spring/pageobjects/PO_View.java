@@ -5,7 +5,7 @@ import java.util.List;
 import com.uniovi.sdi2122904spring.util.SeleniumUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
+//hice el commit 5.2 mal
 public class PO_View {
 	
 	protected static PO_Properties p = new PO_Properties("messages");
